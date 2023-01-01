@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Fake from "src/sub_module/fake";
+import Fake from "src/app/sub_module/fake";
 import { render, screen } from "@testing-library/react";
 
 test("Fake component matches the snapshot", () => {
