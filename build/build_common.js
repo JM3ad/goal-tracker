@@ -1,5 +1,6 @@
 const envFilePlugin = require("esbuild-envfile-plugin");
 const { svgrPlugin } = require("esbuild-svgr-plugin");
+const { sassPlugin } = require("esbuild-sass-plugin");
 
 const buildOptions = {
     bundle: true,
@@ -12,7 +13,13 @@ const buildOptions = {
     incremental: true,
     minify: true,
     outfile: "public/bundle.js",
-    plugins: [envFilePlugin, svgrPlugin({ typescript: true })],
+    plugins: [
+        envFilePlugin,
+        svgrPlugin({ typescript: true }),
+        sassPlugin({
+            importMapper: (path) => path.replace(/^@src\//, ["../src/"]),
+        }),
+    ],
     loader: { ".svg": "text" },
 };
 

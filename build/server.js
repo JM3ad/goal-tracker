@@ -13,7 +13,7 @@ const runServer = async () => {
             builder.rebuild();
         });
     liveServer.start({
-        open: true,
+        open: "/goal-tracker",
         port: +process.env.PORT || 8080,
         root: "public",
         mount: [["/goal-tracker", "./public"]],

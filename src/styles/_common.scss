@@ -1,0 +1,12 @@
+@import "./vars";
+
+@mixin button {
+    background-color: $secondaryColor;
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    border-radius: 1rem;
+    margin: 0.5rem;
+    padding: 1rem;
+    min-width: 12rem;
+}

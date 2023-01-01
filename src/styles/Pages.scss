@@ -1,0 +1,43 @@
+@import "./vars";
+@import "./common";
+
+.app-page {
+    background-color: $backgroundColor;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.recipe {
+    margin: 2rem;
+}
+
+.recipe-link {
+    @include button;
+}
+
+.action-button {
+    @include button;
+    font-size: 1rem;
+}
+
+.small-action-button {
+    @include button;
+    font-size: 1rem;
+    min-width: 1rem;
+    padding: 0.25rem 0.75rem;
+}
+
+input {
+    border-radius: 0.5rem;
+    min-width: 20rem;
+}
+
+.recessive-link {
+    color: $secondaryColor;
+    font-size: 1rem;
+}
