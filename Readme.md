@@ -1,6 +1,6 @@
-# Scratch React
+# Goal Tracker App
 
-An experimental project for exploring setting up a React App without using create-react-app.
+A simple project for tracking goals across time.
 
 ## Zero To Hero
 
