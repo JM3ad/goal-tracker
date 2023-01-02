@@ -17,6 +17,7 @@ const runServer = async () => {
         port: +process.env.PORT || 8080,
         root: "public",
         mount: [["/goal-tracker", "./public"]],
+        file: "404.html",
     });
 };
 

@@ -1,3 +1,5 @@
+import { ProgressRecord } from "./progress-record";
+
 interface Serializable<T> {
     serialize(): T;
 }
@@ -6,39 +8,39 @@ export type SerializedResolution = {
     id: string;
     name: string;
     target: number;
-    records: string[];
+    records: ProgressRecord[];
 };
 
 class Resolution implements Serializable<SerializedResolution> {
     id: string;
     name: string;
     target: number;
-    records: Date[];
+    records: ProgressRecord[];
 
-    constructor(id: string, name: string, target: number, records: string[]) {
+    constructor(
+        id: string,
+        name: string,
+        target: number,
+        records: ProgressRecord[]
+    ) {
         this.id = id;
         this.name = name;
         this.target = target;
-        this.records = records.map((dateString) => new Date(dateString));
+        this.records = records;
     }
-
-    addRecord = () => {
-        this.records.push(new Date());
-    };
 
     serialize = () => {
         return {
             id: this.id,
             name: this.name,
             target: this.target,
-            records: this.records.map((date) => date.toDateString()),
+            records: this.records,
         };
     };
 
     static deserialize = (json: SerializedResolution) => {
         const records = json.records !== null ? json.records : [];
-        const dateRecords = records;
-        return new Resolution(json.id, json.name, json.target, dateRecords);
+        return new Resolution(json.id, json.name, json.target, records);
     };
 }
 

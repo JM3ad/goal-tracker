@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { v4 as uuidv4 } from "uuid";
 import Resolution from "src/app/models/resolution";
 import ResolutionService from "src/app/services/resolution-service";
@@ -7,6 +9,8 @@ import ResolutionsContext from "src/app/contexts/resolution-context";
 const NewResolutionPage = () => {
     const [title, setTitle] = useState<string>("");
     const [target, setTarget] = useState<number>(0);
+
+    const navigate = useNavigate();
     const resolutionContext = useContext(ResolutionsContext);
     const updateTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(e.target.value);
@@ -21,6 +25,7 @@ const NewResolutionPage = () => {
             new Resolution(uuidv4(), title, target, [])
         );
         resolutionContext.refresh();
+        navigate("/");
     };
 
     // TODO Split and share with editing

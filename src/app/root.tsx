@@ -14,6 +14,7 @@ import NewResolutionPage from "src/app/pages/new-resolution";
 import ResolutionsContext from "src/app/contexts/resolution-context";
 import ResolutionService from "src/app/services/resolution-service";
 import Resolution from "src/app/models/resolution";
+import ViewResolutionPage from "src/app/pages/view-resolution";
 
 const Root: React.FC = () => {
     const redirect = sessionStorage.redirect;
@@ -44,7 +45,11 @@ const Root: React.FC = () => {
                     <Route path="/" element={<HomePage />}></Route>
                     <Route path="/new" element={<NewResolutionPage />}></Route>
                     <Route path="/edit" element={<>EDIT</>}></Route>
-                    <Route element={<PageNotFound />}></Route>
+                    <Route
+                        path="/view/:resolutionId"
+                        element={<ViewResolutionPage />}
+                    ></Route>
+                    <Route path="*" element={<PageNotFound />}></Route>
                 </Routes>
             </Router>
         </ResolutionsContext.Provider>
