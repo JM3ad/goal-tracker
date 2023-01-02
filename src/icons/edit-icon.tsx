@@ -7,11 +7,10 @@ const EditIcon = () => {
         <svg
             id="Layer_1"
             className="h-8 w-8"
+            width="24"
+            height="24"
             version="1.1"
             viewBox="0 0 50 50"
-            xml:space="preserve"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
         >
             <g id="Layer_1_1_">
                 <rect height="2" width="22" x="8.793" y="14" />
