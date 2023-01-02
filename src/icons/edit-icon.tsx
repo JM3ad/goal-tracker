@@ -1,8 +1,6 @@
 import React from "react";
 
-// TODO Pull the className through as a property, then can set it once for all icons
 const EditIcon = () => {
-    //@ts-ignore
     return (
         <svg id="Layer_1" version="1.1" viewBox="0 0 50 50">
             <g id="Layer_1_1_">

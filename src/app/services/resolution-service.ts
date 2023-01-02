@@ -5,7 +5,6 @@ const RESOLUTIONS_KEY = "RESOLUTIONS";
 
 class ResolutionService {
     static loadResolutions: () => Resolution[] = () => {
-        // TODO try/catch
         const jsonString = localStorage.getItem(RESOLUTIONS_KEY);
         if (jsonString == null) {
             return [];

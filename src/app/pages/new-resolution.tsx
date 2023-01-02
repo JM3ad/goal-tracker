@@ -31,18 +31,6 @@ const NewResolutionPage = () => {
         navigate("/");
     };
 
-    // TODO Split and share with editing
-    // useEffect(() => {
-    //     const recipe = props.recipe;
-    //     if (recipe) {
-    //         setRecipeName(recipe.name);
-    //         if (recipe.ingredients) setIngredients(recipe.ingredients);
-    //         if (recipe.url) setUrl(recipe.url);
-    //         if (recipe.method) setSteps(recipe.method);
-    //         if (recipe.tags) setTags(recipe.tags);
-    //     }
-    // }, [props]);
-
     return (
         <div className="app-page">
             <label htmlFor="title">Name</label>

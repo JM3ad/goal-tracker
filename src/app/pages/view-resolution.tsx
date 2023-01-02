@@ -23,7 +23,6 @@ const ViewResolutionPage: React.FC = () => {
         }
     };
 
-    // TODO deal with missing ones
     const resolution = resolutionContext.resolutions.filter(
         (res) => res.id == resolutionId
     )[0];
