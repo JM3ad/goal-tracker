@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { v4 as uuidv4 } from "uuid";
 import Resolution from "src/app/models/resolution";
 import ResolutionService from "src/app/services/resolution-service";
@@ -21,6 +20,10 @@ const NewResolutionPage = () => {
     };
 
     const create = () => {
+        if (target === 0 || !title || title.trim() === "") {
+            return;
+        }
+
         ResolutionService.addResolution(
             new Resolution(uuidv4(), title, target, [])
         );
@@ -44,13 +47,11 @@ const NewResolutionPage = () => {
         <div className="app-page">
             <label htmlFor="title">Name</label>
             <input name="title" value={title} onChange={updateTitle}></input>
-            <label htmlFor="target">URL</label>
+            <label htmlFor="target">Target</label>
             <input name="target" value={target} onChange={updateTarget}></input>
-            <div>
-                <button className="action-button" onClick={create}>
-                    Save
-                </button>
-            </div>
+            <button className="action-button" onClick={create}>
+                Save
+            </button>
         </div>
     );
 };

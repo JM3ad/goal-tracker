@@ -31,18 +31,14 @@ const ViewResolutionPage: React.FC = () => {
         return <></>;
     }
 
-    const existingProgress = resolution.records.reduce(
-        (prev, curr) => prev + curr.count,
-        0
-    );
+    const existingProgress = resolution.getProgress();
     return (
         <div className="app-page">
-            <div>{resolution.name}</div>
+            <h2>{resolution.name}</h2>
             <div>
                 {existingProgress} / {resolution.target}
             </div>
-            <div>
-                <label htmlFor="progress">Progress</label>
+            <div className="record-progress-form">
                 <input
                     name="progress"
                     value={progress}

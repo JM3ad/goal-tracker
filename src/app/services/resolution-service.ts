@@ -54,6 +54,21 @@ class ResolutionService {
             console.warn(error);
         }
     };
+
+    static getProgressColor = (resolution: Resolution): string => {
+        const onTrackDark = "#337700",
+            targetCloseDark = "#bb6600",
+            targetFarDark = "#550022";
+
+        const percent = resolution.getProgress() / resolution.target;
+        if (percent > 0.66) {
+            return onTrackDark;
+        } else if (percent > 0.33) {
+            return targetCloseDark;
+        } else {
+            return targetFarDark;
+        }
+    };
 }
 
 export default ResolutionService;

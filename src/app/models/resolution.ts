@@ -38,6 +38,10 @@ class Resolution implements Serializable<SerializedResolution> {
         };
     };
 
+    getProgress = () => {
+        return this.records.reduce((prev, curr) => prev + curr.count, 0);
+    };
+
     static deserialize = (json: SerializedResolution) => {
         const records = json.records !== null ? json.records : [];
         return new Resolution(json.id, json.name, json.target, records);
