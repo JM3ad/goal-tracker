@@ -16,7 +16,7 @@ const ViewResolutionPage: React.FC = () => {
     const recordNew = () => {
         if (resolutionId) {
             ResolutionService.addRecord(resolutionId, {
-                date: "", //TODO
+                date: new Date().toISOString(),
                 count: progress,
             });
             resolutionContext.refresh();

@@ -56,9 +56,10 @@ class ResolutionService {
     };
 
     static getProgressColor = (resolution: Resolution): string => {
-        const onTrackDark = "#337700",
-            targetCloseDark = "#bb6600",
-            targetFarDark = "#550022";
+        // TODO Make this depend on time of year?
+        const onTrackDark = "#73C740",
+            targetCloseDark = "#FBA640",
+            targetFarDark = "#F5A0C2";
 
         const percent = resolution.getProgress() / resolution.target;
         if (percent > 0.66) {
