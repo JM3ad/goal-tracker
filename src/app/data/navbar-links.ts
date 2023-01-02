@@ -17,9 +17,4 @@ export const NavBarLinks: NavBarLink[] = [
         icon: plusIcon,
         altText: "Plus icon",
     },
-    {
-        pageRoute: "/edit",
-        icon: editIcon,
-        altText: "Edit Icon",
-    },
 ];

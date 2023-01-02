@@ -4,14 +4,7 @@ import React from "react";
 const EditIcon = () => {
     //@ts-ignore
     return (
-        <svg
-            id="Layer_1"
-            className="h-8 w-8"
-            width="24"
-            height="24"
-            version="1.1"
-            viewBox="0 0 50 50"
-        >
+        <svg id="Layer_1" version="1.1" viewBox="0 0 50 50">
             <g id="Layer_1_1_">
                 <rect height="2" width="22" x="8.793" y="14" />
                 <rect height="2" width="22" x="8.793" y="20" />

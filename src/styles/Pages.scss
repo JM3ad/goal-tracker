@@ -12,17 +12,23 @@
     color: white;
 }
 
-.recipe {
-    margin: 2rem;
-}
-
-.recipe-link {
-    @include button;
+.goal-summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .progress-summary {
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        display: flex;
+    }
 }
 
 .action-button {
     @include button;
     font-size: 1rem;
+    margin-top: 2rem;
 }
 
 .small-action-button {
@@ -35,9 +41,18 @@
 input {
     border-radius: 0.5rem;
     min-width: 20rem;
+    font-size: calc(10px + 5vmin);
+    min-height: 5vh;
+    text-align: center;
 }
 
 .recessive-link {
     color: $secondaryColor;
     font-size: 1rem;
+}
+
+.record-progress-form {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    text-align: center;
 }

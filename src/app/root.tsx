@@ -44,7 +44,6 @@ const Root: React.FC = () => {
                 <Routes>
                     <Route path="/" element={<HomePage />}></Route>
                     <Route path="/new" element={<NewResolutionPage />}></Route>
-                    <Route path="/edit" element={<>EDIT</>}></Route>
                     <Route
                         path="/view/:resolutionId"
                         element={<ViewResolutionPage />}
