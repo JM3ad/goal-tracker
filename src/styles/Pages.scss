@@ -17,11 +17,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100%;
+
+    .action-button {
+        flex: 1;
+    }
+
     .progress-summary {
         align-items: center;
         justify-content: center;
         font-weight: bold;
         display: flex;
+        flex: 0.5;
     }
 }
 

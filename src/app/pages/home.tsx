@@ -31,7 +31,7 @@ const HomePage = () => {
                                 ),
                             }}
                         >
-                            : {resolution.getProgress()} / {resolution.target}
+                            {resolution.getProgress()} / {resolution.target}
                         </span>
                     </div>
                 );
