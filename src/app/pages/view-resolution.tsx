@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ResolutionsContext from "../contexts/resolution-context";
 import ResolutionService from "../services/resolution-service";
 
@@ -46,6 +46,15 @@ const ViewResolutionPage: React.FC = () => {
                 <button className="action-button" onClick={recordNew}>
                     Record progress
                 </button>
+                <Link
+                    to={`/view/${resolution.id}/graph`}
+                    className="action-button"
+                    style={{
+                        marginTop: "0.5rem",
+                    }}
+                >
+                    View Graph
+                </Link>
             </div>
         </div>
     );

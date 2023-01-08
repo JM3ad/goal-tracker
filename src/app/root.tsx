@@ -15,6 +15,7 @@ import ResolutionsContext from "src/app/contexts/resolution-context";
 import ResolutionService from "src/app/services/resolution-service";
 import Resolution from "src/app/models/resolution";
 import ViewResolutionPage from "src/app/pages/view-resolution";
+import ResolutionGraph from "src/app/pages/resolution-graph";
 
 const Root: React.FC = () => {
     const redirect = sessionStorage.redirect;
@@ -47,6 +48,10 @@ const Root: React.FC = () => {
                     <Route
                         path="/view/:resolutionId"
                         element={<ViewResolutionPage />}
+                    ></Route>
+                    <Route
+                        path="/view/:resolutionId/graph"
+                        element={<ResolutionGraph />}
                     ></Route>
                     <Route path="*" element={<PageNotFound />}></Route>
                 </Routes>
