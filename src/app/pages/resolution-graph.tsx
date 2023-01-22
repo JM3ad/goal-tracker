@@ -123,6 +123,7 @@ const ResolutionGraph: React.FC = () => {
                     dataKey="amount"
                     stroke="#ff7300"
                     yAxisId={0}
+                    dot={false}
                 />
                 <Line
                     type="monotone"
