@@ -10,32 +10,34 @@ const HomePage = () => {
         <div className="app-page">
             <h1>Your Goals</h1>
 
-            {resolutionContext.resolutions.map((resolution) => {
-                return (
-                    <div className="goal-summary">
-                        <Link
-                            key={resolution.id}
-                            to={`/view/${resolution.id}`}
-                            className="action-button"
-                            style={{
-                                marginTop: "0.5rem",
-                            }}
-                        >
-                            {resolution.name}
-                        </Link>
-                        <span
-                            className="progress-summary"
-                            style={{
-                                color: ResolutionService.getProgressColor(
-                                    resolution
-                                ),
-                            }}
-                        >
-                            {resolution.getProgress()} / {resolution.target}
-                        </span>
-                    </div>
-                );
-            })}
+            {resolutionContext.resolutions
+                .sort((a, b) => (a.name > b.name ? 1 : -1))
+                .map((resolution) => {
+                    return (
+                        <div className="goal-summary">
+                            <Link
+                                key={resolution.id}
+                                to={`/view/${resolution.id}`}
+                                className="action-button"
+                                style={{
+                                    marginTop: "0.5rem",
+                                }}
+                            >
+                                {resolution.name}
+                            </Link>
+                            <span
+                                className="progress-summary"
+                                style={{
+                                    color: ResolutionService.getProgressColor(
+                                        resolution
+                                    ),
+                                }}
+                            >
+                                {resolution.getProgress()} / {resolution.target}
+                            </span>
+                        </div>
+                    );
+                })}
         </div>
     );
 };
