@@ -34,6 +34,11 @@ const getFormattedData = (resolution: Resolution) => {
             amount: value,
         });
     }
+    // Add an entry for today to show latest data:
+    perDayEntry.push({
+        name: new Date().toDateString(),
+        amount: 0,
+    });
 
     const sorted = perDayEntry.sort(
         (a, b) => new Date(a.name).valueOf() - new Date(b.name).valueOf()
@@ -91,10 +96,16 @@ const ResolutionGraph: React.FC = () => {
         return format(new Date(date), "dd/MMM");
     };
 
+    const expectedProgress =
+        (ResolutionService.daysIntoYear(new Date()) / 365) * resolution.target;
     const expected = [
         {
             name: Date.UTC(2023, 0, 1),
             expected: 0,
+        },
+        {
+            name: new Date(),
+            expected: expectedProgress,
         },
         {
             name: Date.UTC(2023, 11, 31),

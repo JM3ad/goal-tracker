@@ -54,7 +54,7 @@ class ResolutionService {
         }
     };
 
-    private static daysIntoYear = (date: Date) => {
+    public static daysIntoYear = (date: Date) => {
         return (
             (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
                 Date.UTC(date.getFullYear(), 0, 0)) /
