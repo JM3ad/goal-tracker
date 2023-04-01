@@ -9,3 +9,8 @@ const App = () => {
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service_worker.js");
+    console.log("Registering service worker");
+}
