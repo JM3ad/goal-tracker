@@ -25,7 +25,13 @@ const NewResolutionPage = () => {
         }
 
         ResolutionService.addResolution(
-            new Resolution(uuidv4(), title, target, [])
+            new Resolution(
+                uuidv4(),
+                title,
+                target,
+                [],
+                new Date().getFullYear()
+            )
         );
         resolutionContext.refresh();
         navigate("/");

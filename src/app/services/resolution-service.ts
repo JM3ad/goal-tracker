@@ -66,7 +66,11 @@ class ResolutionService {
     };
 
     static getProgressColor = (resolution: Resolution): string => {
-        const numberOfDaysInCurrentYear = this.daysIntoYear(new Date());
+        const isCurrentYear =
+            resolution.relevantYear == new Date().getFullYear();
+        const numberOfDaysInCurrentYear = isCurrentYear
+            ? this.daysIntoYear(new Date())
+            : 365;
         // Ignores leap years, won't worry
         const proportionOfYearPassed = numberOfDaysInCurrentYear / 365;
 

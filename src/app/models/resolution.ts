@@ -9,6 +9,7 @@ export type SerializedResolution = {
     name: string;
     target: number;
     records: ProgressRecord[];
+    relevantYear: number;
 };
 
 class Resolution implements Serializable<SerializedResolution> {
@@ -16,17 +17,20 @@ class Resolution implements Serializable<SerializedResolution> {
     name: string;
     target: number;
     records: ProgressRecord[];
+    relevantYear: number;
 
     constructor(
         id: string,
         name: string,
         target: number,
-        records: ProgressRecord[]
+        records: ProgressRecord[],
+        relevantYear: number
     ) {
         this.id = id;
         this.name = name;
         this.target = target;
         this.records = records;
+        this.relevantYear = relevantYear;
     }
 
     serialize = () => {
@@ -35,6 +39,7 @@ class Resolution implements Serializable<SerializedResolution> {
             name: this.name,
             target: this.target,
             records: this.records,
+            relevantYear: this.relevantYear,
         };
     };
 
@@ -44,7 +49,18 @@ class Resolution implements Serializable<SerializedResolution> {
 
     static deserialize = (json: SerializedResolution) => {
         const records = json.records !== null ? json.records : [];
-        return new Resolution(json.id, json.name, json.target, records);
+        // For historical reasons, assume any resolutions without this specified were created in 2023
+        const relevantYear =
+            json.relevantYear !== null && json.relevantYear !== undefined
+                ? json.relevantYear
+                : 2023;
+        return new Resolution(
+            json.id,
+            json.name,
+            json.target,
+            records,
+            relevantYear
+        );
     };
 }
 
