@@ -1,6 +1,6 @@
 const config = {
     transform: {
-        "^.+\\.tsx?$": "esbuild-jest",
+        "^.+\\.tsx?$": "esbuild-jest-transform",
     },
     moduleNameMapper: {
         "^src(.*)$": "<rootDir>/src$1",

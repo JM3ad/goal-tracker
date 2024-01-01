@@ -15,6 +15,8 @@ import ResolutionService from "../services/resolution-service";
 const getFormattedData = (resolution: Resolution) => {
     const records = resolution.records;
     const dataPerDay: { [name: string]: number } = {};
+    const year = resolution.relevantYear;
+    const isCurrentYear = resolution.relevantYear == new Date().getFullYear();
     records.forEach((record) => {
         const day = new Date(record.date).toDateString();
         if (!dataPerDay[day]) {
@@ -24,7 +26,7 @@ const getFormattedData = (resolution: Resolution) => {
     });
     const perDayEntry = [
         {
-            name: new Date(Date.UTC(2023, 0, 1)).toDateString(),
+            name: new Date(Date.UTC(year, 0, 1)).toDateString(),
             amount: 0,
         },
     ];
@@ -35,10 +37,17 @@ const getFormattedData = (resolution: Resolution) => {
         });
     }
     // Add an entry for today to show latest data:
-    perDayEntry.push({
-        name: new Date().toDateString(),
-        amount: 0,
-    });
+    if (isCurrentYear) {
+        perDayEntry.push({
+            name: new Date().toDateString(),
+            amount: 0,
+        });
+    } else {
+        perDayEntry.push({
+            name: new Date(Date.UTC(year, 11, 31)).toDateString(),
+            amount: 0,
+        });
+    }
 
     const sorted = perDayEntry.sort(
         (a, b) => new Date(a.name).valueOf() - new Date(b.name).valueOf()
@@ -82,36 +91,46 @@ const ResolutionGraph: React.FC = () => {
 
     // Assume records in order
     const data = getFormattedData(resolution);
+    const year = resolution.relevantYear;
 
     const ticks = [
-        Date.UTC(2023, 0, 1),
-        Date.UTC(2023, 3, 1),
-        Date.UTC(2023, 6, 1),
-        Date.UTC(2023, 9, 1),
-        Date.UTC(2023, 11, 31),
+        Date.UTC(year, 0, 1),
+        Date.UTC(year, 3, 1),
+        Date.UTC(year, 6, 1),
+        Date.UTC(year, 9, 1),
+        Date.UTC(year, 11, 31),
     ];
 
-    const domain = [Date.UTC(2023, 0, 1), Date.UTC(2023, 11, 31)];
+    const domain = [Date.UTC(year, 0, 1), Date.UTC(year, 11, 31)];
     const dateFormatter = (date: string) => {
         return format(new Date(date), "dd/MMM");
     };
 
-    const expectedProgress =
-        (ResolutionService.daysIntoYear(new Date()) / 365) * resolution.target;
+    const isOldResolution = year != new Date().getFullYear();
+    const today = new Date();
+    const expectedProgress = isOldResolution
+        ? resolution.target
+        : ((ResolutionService.daysIntoYear(today) - 1) / 365) *
+          resolution.target;
     const expected = [
         {
-            name: Date.UTC(2023, 0, 1),
+            name: Date.UTC(year, 0, 1),
             expected: 0,
         },
-        {
-            name: new Date(),
-            expected: expectedProgress,
-        },
-        {
-            name: Date.UTC(2023, 11, 31),
-            expected: resolution.target,
-        },
     ];
+
+    if (!isOldResolution) {
+        const currentDay = new Date();
+        expected.push({
+            name: Date.UTC(year, currentDay.getMonth(), currentDay.getDate()),
+            expected: expectedProgress,
+        });
+    }
+
+    expected.push({
+        name: Date.UTC(year, 11, 31),
+        expected: resolution.target,
+    });
 
     return (
         <ResponsiveContainer aspect={4.0 / 3.0} width="100%">

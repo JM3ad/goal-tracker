@@ -1,6 +1,6 @@
 const { build } = require("esbuild");
 const chokidar = require("chokidar");
-const liveServer = require("live-server");
+const liveServer = require("alive-server");
 const { devBuildOptions } = require("./build_common");
 
 const runServer = async () => {
