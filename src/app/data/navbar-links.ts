@@ -1,7 +1,7 @@
 import { NavBarLink } from "src/app/models/navbar-link";
 import homeIcon from "src/icons/home-icon";
 import plusIcon from "src/icons/plus-icon";
-import oldIcon from "src/icons/old-icon";
+import TextIcon from "src/icons/text-icon";
 
 export const NavBarLinks: NavBarLink[] = [
     {
@@ -16,7 +16,12 @@ export const NavBarLinks: NavBarLink[] = [
     },
     {
         pageRoute: "/old",
-        icon: oldIcon,
+        icon: () => TextIcon("Old"),
         altText: "old",
+    },
+    {
+        pageRoute: "/export",
+        icon: () => TextIcon("Transfer Data"),
+        altText: "Transfer Data",
     },
 ];

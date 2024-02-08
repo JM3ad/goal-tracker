@@ -32,6 +32,17 @@ class ResolutionService {
         }
     };
 
+    static overrideValues: (resolutions: any) => void = (resolutions: any) => {
+        if (!window.confirm("Do you want to override the existing goals?")) {
+            return;
+        }
+        try {
+            localStorage.setItem(RESOLUTIONS_KEY, JSON.stringify(resolutions));
+        } catch (error) {
+            console.warn(error);
+        }
+    };
+
     static addRecord = (id: string, record: ProgressRecord) => {
         try {
             const jsonString = localStorage.getItem(RESOLUTIONS_KEY);

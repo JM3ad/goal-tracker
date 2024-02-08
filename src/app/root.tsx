@@ -16,7 +16,8 @@ import ResolutionService from "src/app/services/resolution-service";
 import Resolution from "src/app/models/resolution";
 import ViewResolutionPage from "src/app/pages/view-resolution";
 import ResolutionGraph from "src/app/pages/resolution-graph";
-import OldResolutions from "./pages/old-resolutions";
+import OldResolutions from "src/app/pages/old-resolutions";
+import Export from "src/app/pages/export";
 
 const Root: React.FC = () => {
     const redirect = sessionStorage.redirect;
@@ -55,6 +56,7 @@ const Root: React.FC = () => {
                         element={<ResolutionGraph />}
                     ></Route>
                     <Route path="/old" element={<OldResolutions />}></Route>
+                    <Route path="/export" element={<Export />}></Route>
                     <Route path="*" element={<PageNotFound />}></Route>
                 </Routes>
             </Router>
