@@ -19,9 +19,10 @@ export const NavBarLinks: NavBarLink[] = [
         icon: () => TextIcon("Old"),
         altText: "old",
     },
-    {
-        pageRoute: "/export",
-        icon: () => TextIcon("Transfer Data"),
-        altText: "Transfer Data",
-    },
+    // hide the export functionality by default:
+    // {
+    //     pageRoute: "/export",
+    //     icon: () => TextIcon("Transfer Data"),
+    //     altText: "Transfer Data",
+    // },
 ];
